@@ -2,6 +2,7 @@ package com.neuedu.dao;
 
 import com.neuedu.pojo.UserInfo;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -46,4 +47,14 @@ public interface UserInfoMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(UserInfo record);
+
+    /*
+    * 校验用户名是否存在
+    * */
+    int checkUser(String username);
+    /*
+    * 根据用户名和密码查询信息
+    * */
+    UserInfo selectUserInfoByUsernameAndPassword(@Param("username") String username,
+                                                 @Param("password") String password);
 }
